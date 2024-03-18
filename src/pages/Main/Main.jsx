@@ -1,13 +1,16 @@
 import React from "react";
 import { NewsBanner } from "../../components/NewsBanner/NewsBanner";
 import styles from "./styles.module.css";
-import { getNews } from "../../api/api.news";
+import { getCategories, getNews } from "../../api/api.news";
 import { NewsList } from "../../components/NewsList/NewsList";
 import { Skeleton } from "../../components/Skeleton/Skeleton";
 import { Pagination } from "../../components/Pagination/Pagination";
+import { Categories } from "../../components/Categories/Categories";
 
 export const Main = () => {
   const [news, setNews] = React.useState([]);
+  const [categories, setCategories] = React.useState([]);
+  const [selectedCategory, setSelectedCategory] = React.useState("All");
   const [isLoading, setIsLoading] = React.useState(true);
   const [currentPage, setCurrentPage] = React.useState(1);
   const totalPage = 10;
@@ -16,7 +19,11 @@ export const Main = () => {
   const fetchNews = async () => {
     try {
       setIsLoading(true);
-      const res = await getNews(currentPage, pageSize);
+      const res = await getNews({
+        page_number: currentPage,
+        page_size: pageSize,
+        category: selectedCategory === "All" ? null : selectedCategory
+      });
       setNews(res.news);
       setIsLoading(false);
     } catch (error) {
@@ -24,9 +31,22 @@ export const Main = () => {
     }
   };
 
+  const fetchCategories = async () => {
+    try {
+      const res = await getCategories();
+      setCategories(["All", ...res.categories]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  React.useEffect(() => {
+    fetchCategories();
+  }, []);
+
   React.useEffect(() => {
     fetchNews();
-  }, [currentPage]);
+  }, [currentPage, selectedCategory]);
 
   const handlenextPage = () => {
     if (currentPage < totalPage) {
@@ -46,6 +66,8 @@ export const Main = () => {
 
   return (
     <main className={styles.main}>
+    <Categories setSelectedCategory={setSelectedCategory} selectedCategory={selectedCategory} categories={categories}/>
+
       {news.length > 0 && !isLoading ? (
         <NewsBanner item={news[0]} />
       ) : (
@@ -59,6 +81,7 @@ export const Main = () => {
         totalPage={totalPage}
         currentPage={currentPage}
       />
+
 
       {!isLoading ? (
         <NewsList news={news} />
