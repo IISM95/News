@@ -1,4 +1,4 @@
-//функция преоброзования new Date() в компоненте Header в строку 
+//функция преоброзования new Date() в компоненте Header в строку типа "Tuesday, March 12, 2024"
 export const formatDate = (date) => {
   const options = {
     weekday: "long", // Полное название дня недели

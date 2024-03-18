@@ -1,4 +1,4 @@
-//функция которая проверяет сколько прошло времени с публикации NewsBanner
+//функция которая проверяет сколько прошло времени с публикации NewsBanner "5h ago by foxnews"
 
 export const formatTimeAgo = (dateString) => {
     const now = new Date();
