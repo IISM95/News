@@ -1,9 +1,10 @@
 //список новостей после главной новости которые мепятся в настроенную карточку
+import withSkeleton from "../../helpers/hocs/withSkeleton";
 import { NewsItem } from "../NewsItem/NewsItem";
 import styles from "./styles.module.css";
 
 
-export const NewsList = ({ news }) => {
+const NewsList = ({ news }) => {
   return (
     <ul className={styles.list}>
       {
@@ -14,3 +15,7 @@ export const NewsList = ({ news }) => {
     </ul>
   );
 };
+
+const NewsBannerWithSceleton = withSkeleton(NewsList, "item", 10)
+
+export default NewsBannerWithSceleton

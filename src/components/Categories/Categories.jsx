@@ -7,17 +7,25 @@ export const Categories = ({
 }) => {
   return (
     <div className={styles.categories}>
-      {categories.map((catigory) => (
-        <button
-          className={
-            selectedCategory === catigory ? styles.active : styles.item
-          }
-          key={catigory}
-          onClick={() => setSelectedCategory(catigory)}
-        >
-          {catigory}
-        </button>
-      ))}
+      <button
+        className={!selectedCategory ? styles.active : styles.item}
+        onClick={() => setSelectedCategory(null)}
+      >
+        All
+      </button>
+      {categories.map((category) => {
+        return (
+          <button
+            className={
+              selectedCategory === category ? styles.active : styles.item
+            }
+            key={category}
+            onClick={() => setSelectedCategory(category)}
+          >
+            {category}
+          </button>
+        );
+      })}
     </div>
   );
 };

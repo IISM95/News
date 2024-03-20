@@ -1,10 +1,12 @@
 //первая главная новость под фото
 import { Image } from "../Image/Image";
-import { formatTimeAgo } from "../helpers/formatTimeAgo";
+import { formatTimeAgo } from "../../helpers/formatTimeAgo";
 import styles from "./styles.module.css";
+import withSkeleton from "../../helpers/hocs/withSkeleton";
 
 
-export const NewsBanner = ({ item }) => {
+const NewsBanner = ({ item }) => {
+
   return (
     <div className={styles.banner}>
       <Image image={item?.image}/>
@@ -13,3 +15,8 @@ export const NewsBanner = ({ item }) => {
     </div>
   );
 };
+
+const NewsBannerWithSceleton = withSkeleton(NewsBanner, "banner", 1)
+
+
+export default NewsBannerWithSceleton
