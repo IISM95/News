@@ -19,7 +19,7 @@ export const Main = () => {
   category: null,
   keywords: "",
 })
-  const debounsedKetword = useDebounce(filters.keywords, 1000);
+  const debounsedKetword = useDebounce(filters.keywords, 3000);
 
   const { data, isLoading } = useFetch(getNews, {
     ...filters,
