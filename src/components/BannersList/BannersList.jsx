@@ -4,18 +4,16 @@ import NewsBanner from "../NewsBanner/NewsBanner";
 
 const BannersList = ({ banners }) => {
   return (
-  <ul className={styles.banners}>
-    {
-      banners?.map(banner => (
+    <ul className={styles.banners}>
+      {banners?.map((banner) => (
         <li key={banner}>
-         <NewsBanner key={banner.id} item={banner}/>
+          <NewsBanner key={banner.id} item={banner} />
         </li>
-      ))
-    }
-  </ul>)
+      ))}
+    </ul>
+  );
 };
 
-const BannersListWithSceleton = withSkeleton(BannersList, "banner", 10 , 'row');
+const BannersListWithSceleton = withSkeleton(BannersList, "banner", 10, "row");
 
 export default BannersListWithSceleton;
-
