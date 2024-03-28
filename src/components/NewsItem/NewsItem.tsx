@@ -1,8 +1,13 @@
 //настроенная карточка для новостей с NewsList
 import { formatTimeAgo } from "../../helpers/formatTimeAgo";
+import { INews } from "../../interfaces";
 import styles from "./styles.module.css";
 
-export const NewsItem = ({ item }) => {
+interface NewsItem{
+  item:INews
+}
+
+export const NewsItem = ({ item }:NewsItem) => {
   return (
     <li className={styles.item}>
       <div

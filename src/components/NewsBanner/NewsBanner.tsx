@@ -2,9 +2,14 @@
 import { Image } from "../Image/Image";
 import { formatTimeAgo } from "../../helpers/formatTimeAgo";
 import styles from "./styles.module.css";
+import { INews } from "../../interfaces";
+
+interface NewsBannerProps {
+  item: INews
+}
 
 
-const NewsBanner = ({ item }) => {
+const NewsBanner = ({ item }:NewsBannerProps) => {
 
   return (
     <div className={styles.banner}>

@@ -1,6 +1,6 @@
 //функция которая проверяет сколько прошло времени с публикации NewsBanner "5h ago by foxnews"
 
-export const formatTimeAgo = (dateString) => {
+export const formatTimeAgo = (dateString:string) => {
     const now = new Date();
     const date = new Date(dateString);
     const secondPast = (now.getTime() - date.getTime()) / 1000;

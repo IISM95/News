@@ -1,6 +1,14 @@
+import { DirectionType, SkeletonType } from "../../interfaces";
 import styles from "./styles.module.css";
 
-export const Skeleton = ({ count = 1, type = "bynner", direction = 'column'}) => {
+interface Skeleton {
+  type?: SkeletonType,
+  count?: number,
+  direction?: DirectionType
+}
+
+
+export const Skeleton = ({ count = 1, type = "banner", direction = 'column'}:Skeleton) => {
   return (
     <>
       {count > 1 ? (

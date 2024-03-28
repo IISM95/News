@@ -1,7 +1,12 @@
 //главное изображение
 import styles from "./styles.module.css";
 
-export const Image = ({ image }) => {
+interface ImageProps {
+  image:string
+}
+
+export const Image = ({ image }:ImageProps) => {
+  
   return (
     <div className={styles.wrapper}>
       {image ? <img src={image} alt="news"  className={styles.image}/> : null}
