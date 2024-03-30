@@ -9,6 +9,8 @@ import NewsList from "../NewsList/NewsList";
 import { PaginationWrapper } from "../PaginationWrapper/PaginationWrapper";
 import styles from "./styles.module.css";
 
+
+
 export const NewsByFilters = () => {
   const { filters, changeFilter } = useFilter({
     page_number: 1,

@@ -5,7 +5,6 @@ interface PaginationWrapperProps {
   top?:boolean;
   bottom?:boolean;
   children: React.ReactNode
-  
 }
 
 
@@ -14,7 +13,7 @@ export const PaginationWrapper = ({top, bottom, children, ...paginationProps}:Pa
     <>
       {top && <Pagination {...paginationProps} />}
       {children}
-      {bottom && <Pagination {...paginationProps} />}
+      {bottom && <Pagination  {...paginationProps} />}
     </>
   );
 };
