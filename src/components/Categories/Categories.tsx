@@ -1,6 +1,6 @@
 import React, { ForwardedRef } from "react";
 import styles from "./styles.module.css";
-import { CategoriesType, IFilters } from "../../interfaces";
+import { CategoriesType } from "../../interfaces";
 
 
 interface CategoriesProps {
