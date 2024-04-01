@@ -9,6 +9,7 @@ import { newsApi } from './services/newsApi'
 export const store = configureStore({
   reducer: {
     news: newsReducer,
+    
     [newsApi.reducerPath]: newsApi.reducer
     
   },
