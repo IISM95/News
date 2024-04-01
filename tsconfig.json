@@ -18,8 +18,12 @@
     "strict": true,
     "noUnusedLocals": false, // Изменено на false, чтобы отключить предупреждение о неиспользуемых локальных переменных
     "noUnusedParameters": false, // Изменено на false, чтобы отключить предупреждение о неиспользуемых параметрах функций
-    "noFallthroughCasesInSwitch": true
-  },
-  "include": ["src"],
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+  }
+},
+  "include": ["src", "shared/interfaces/vite-env.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
