@@ -1,6 +1,7 @@
 import React, { ForwardedRef } from "react";
 import styles from "./styles.module.css";
-import { CategoriesType } from "@/shared/interfaces";
+import { CategoriesType } from "@/entities/category";
+
 
 
 interface CategoriesProps {
