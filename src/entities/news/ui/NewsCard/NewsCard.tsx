@@ -1,18 +1,21 @@
 import { formatTimeAgo } from "@/shared/helpers/formatTimeAgo";
 import { INews } from "../..";
 import styles from "./styles.module.css";
+import { Image } from "@/shared/ui/Image/Image";
 
 interface NewsItem {
   item: INews;
+  type:'banner' | 'item'
 }
 
-export const NewsItem = ({ item }: NewsItem) => {
+export const NewsCard = ({ item, type ='item' }: NewsItem) => {
   return (
-    <li className={styles.item}>
-      <div
+    <li className={`${styles.card}  ${type === 'banner' && styles.banner}`}>
+      {type === 'banner' ?<Image image={item?.image} /> : <div
         className={styles.wrapper}
         style={{ backgroundImage: `url(${item.image})` }}
-      ></div>
+      ></div>}
+      
       <div className={styles.info}>
         <h3 className={styles.title}>{item.title}</h3>
         <p className={styles.extra}>

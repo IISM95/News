@@ -5,26 +5,26 @@ import { Slider } from "@/features/slider/ui/Slider/Slider";
 import { IFilters } from "@/shared/interfaces";
 import { setFilters } from "@/entities/news/model/newsSlice";
 import styles from "./styles.module.css";
-import { useGetCategoriesQuery } from "@/entities/category/api/categoriesApi";
+import { CategoriesType } from "@/entities/category";
 
 interface NewsFiltersProps {
   filters: IFilters;
+  categories: CategoriesType[]
 }
 
-export const NewsFilters = ({ filters }: NewsFiltersProps) => {
-  const { data } = useGetCategoriesQuery(null);
+export const NewsFilters = ({ filters, categories}: NewsFiltersProps) => {
   const dispath = useAppDispatch();
 
   return (
     <div className={styles.filters}>
-      {data ? (
+      {categories ? (
         <Slider>
           <Categories
             setSelectedCategory={(category) =>
               dispath(setFilters({ key: "category", value: category }))
             }
             selectedCategory={filters.category}
-            categories={data.categories}
+            categories={categories}
           />
         </Slider>
       ) : null}
