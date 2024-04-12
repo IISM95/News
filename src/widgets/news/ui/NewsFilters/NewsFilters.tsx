@@ -9,10 +9,12 @@ import { CategoriesType } from "@/entities/category";
 
 interface NewsFiltersProps {
   filters: IFilters;
-  categories: CategoriesType[]
+  categories: CategoriesType[];
 }
 
-export const NewsFilters = ({ filters, categories}: NewsFiltersProps) => {
+export const NewsFilters = ({ filters, categories }: NewsFiltersProps) => {
+
+  
   const dispath = useAppDispatch();
 
   return (
@@ -20,9 +22,7 @@ export const NewsFilters = ({ filters, categories}: NewsFiltersProps) => {
       {categories ? (
         <Slider>
           <Categories
-            setSelectedCategory={(category) =>
-              dispath(setFilters({ key: "category", value: category }))
-            }
+            setSelectedCategory={(category) => dispath(setFilters({ key: "category", value: category }))}
             selectedCategory={filters.category}
             categories={categories}
           />

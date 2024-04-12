@@ -7,11 +7,8 @@ interface Skeleton {
   direction?: DirectionType;
 }
 
-export const Skeleton = ({
-  count = 1,
-  type = "banner",
-  direction = "column",
-}: Skeleton) => {
+export const Skeleton = ({count = 1,type = "banner",direction = "column"}: Skeleton) => {
+  
   return (
     <>
       {count > 1 ? (

@@ -3,14 +3,15 @@ import { ThemeProvider } from "@/app/provaiders/ThemeProvader";
 import React from "react";
 import { Provider } from "react-redux";
 import { store } from "./appStore";
-import BaseLayout from "./layouts/BaseLayout";
 import '@/shared/index.css'
+import { RouterProvider } from "react-router-dom";
+import { appRouter } from "./appRouter";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ThemeProvider>
       <Provider store={store}>
-        <BaseLayout />
+      <RouterProvider router={appRouter} />
       </Provider>
     </ThemeProvider>
   </React.StrictMode>

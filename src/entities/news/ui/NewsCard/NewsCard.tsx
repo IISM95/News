@@ -2,13 +2,15 @@ import { formatTimeAgo } from "@/shared/helpers/formatTimeAgo";
 import { INews } from "../..";
 import styles from "./styles.module.css";
 import { Image } from "@/shared/ui/Image/Image";
+import { ReactNode } from "react";
 
 interface NewsItem {
   item: INews;
-  type:'banner' | 'item'
+  type:'banner' | 'item';
+  viewNewsSlot?: (news:INews) => ReactNode
 }
 
-export const NewsCard = ({ item, type ='item' }: NewsItem) => {
+export const NewsCard = ({ item, type ='item',viewNewsSlot }: NewsItem) => {
   return (
     <li className={`${styles.card}  ${type === 'banner' && styles.banner}`}>
       {type === 'banner' ?<Image image={item?.image} /> : <div
@@ -22,6 +24,7 @@ export const NewsCard = ({ item, type ='item' }: NewsItem) => {
           {formatTimeAgo(item.published)} by {item.author}
         </p>
       </div>
+      {viewNewsSlot ? viewNewsSlot(item) : null}
     </li>
   );
 };
